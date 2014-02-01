@@ -22,3 +22,10 @@
 *********************************************************************************/
 
 
+#include "account.h"
+char *servername = "irc.twitch.tv";
+int serverport = 6667;
+char *username = "";
+char *password = "";
+int ver_major = 0;
+int ver_minor = 1;

@@ -22,3 +22,24 @@
 *********************************************************************************/
 
 
+#ifndef CONNECTION_H
+#define CONNECTION_H
+
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <pthread.h>
+int sockfd;
+struct sockaddr_in serv_addr;
+struct hostent *server;
+char buffer[2048];
+int connected;
+pthread_t receiveThread;
+
+int bt_connect(const char* hostname, int port);
+int bt_send(char* message);
+int bt_sendRoom(char* room, char* text);
+int bt_disconnect();
+void* bt_receive(void* defp);
+
+#endif

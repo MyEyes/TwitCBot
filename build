@@ -1,0 +1,2 @@
+#!/bin/sh
+gcc -g -Wall account.c bot.c connection.c message.c handler.c -o bot -pthread

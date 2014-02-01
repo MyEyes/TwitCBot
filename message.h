@@ -22,3 +22,40 @@
 *********************************************************************************/
 
 
+#ifndef MESSAGE_H
+#define MESSAGE_H
+enum messagetype_t
+{
+	NICK,
+	PASS,
+	NOTICE,
+	PRIVMSG,
+	JOIN,
+	NUMERIC,
+	PING,
+	PONG,
+	PART,
+	HISTORYEND,
+	MODE,
+	EMOTESET,
+	USERCOLOR
+};
+
+struct irc_message_t
+{
+	enum messagetype_t 	Type;
+	int			Numeric;
+	char* 			Sender;
+	char*			Parameters;
+	char*			LongParameter;
+	int			ByteLength;
+};
+
+struct irc_message_t* 	bt_decodeMessage(char* input);
+char*			bt_encodeMessage(struct irc_message_t* input);
+void			bt_printMessage(struct irc_message_t* msg);
+void			bt_freeMessage(struct irc_message_t* msg);
+enum messagetype_t	bt_msgTypeFromString(char* str);
+const char*		bt_msgTypeToString(enum messagetype_t type);
+int			bt_measureMsgLength(struct irc_message_t* msg);
+#endif

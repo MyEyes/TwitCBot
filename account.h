@@ -22,3 +22,12 @@
 *********************************************************************************/
 
 
+#ifndef ACCOUNTS_H
+#define ACCOUNTS_H
+extern char *servername;
+extern int serverport;
+extern char *username;
+extern char *password;
+extern int ver_major;
+extern int ver_minor;
+#endif

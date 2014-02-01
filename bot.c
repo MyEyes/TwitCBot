@@ -22,3 +22,42 @@
 *********************************************************************************/
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include "account.h"
+#include "bot.h"
+#include "connection.h"
+#include "message.h"
+#include "handler.h"
+
+void error(const char *msg)
+{
+	fprintf(stderr, "ERROR, %s\n", msg);
+	perror("");
+	exit(-1);
+}
+
+void warning(const char *msg)
+{
+	fprintf(stderr, "WARNING, %s\n", msg);
+}
+
+int main(int argc, char*argv[])
+{
+	printf("Starting Firzberrybot v%d.%d\n",ver_major,ver_minor);
+	bt_setupHandlers();
+	bt_connect(servername, serverport);
+	char* message = malloc(sizeof(char)*1024);
+	sprintf(message, "PASS %s\r\n", password);
+	bt_send(message);
+	sprintf(message, "NICK %s\r\n", username);
+	bt_send(message);
+	sprintf(message, "JOIN #firzen14\r\n");
+	bt_send(message);
+	while(1)
+		;
+	return 0;
+}

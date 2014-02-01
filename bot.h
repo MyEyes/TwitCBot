@@ -22,3 +22,9 @@
 *********************************************************************************/
 
 
+#ifndef BOT_H
+#define BOT_H
+
+void error(const char *msg);
+void warning(const char *msg);
+#endif

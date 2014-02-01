@@ -22,3 +22,22 @@
 *********************************************************************************/
 
 
+#ifndef HANDLER_H
+#define HANDLER_H
+#define _GNU_SOURCE
+#include "account.h"
+#include "message.h"
+#include "connection.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+typedef int (*handler)(struct irc_message_t*);
+handler* handlers;
+
+void bt_setupHandlers();
+void bt_handle(struct irc_message_t *msg);
+int bt_handlePrivMsg(struct irc_message_t* msg);
+int bt_handleNumeric(struct irc_message_t* msg);
+int bt_handlePing(struct irc_message_t* msg);
+int bt_defaultHandler(struct irc_message_t* msg);
+#endif
